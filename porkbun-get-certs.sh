@@ -56,7 +56,7 @@ done
 
 for domain in "$@"; do
 	req="{\"apikey\":\"${public_key}\",\"secretapikey\":\"${secret_key}\"}"
-	reply=$(curl --data-raw "$req" -H "Content-Type: application/json" "https://porkbun.com/api/json/v3/ssl/retrieve/${domain}")
+	reply=$(curl --silent --data-raw "$req" -H "Content-Type: application/json" "https://porkbun.com/api/json/v3/ssl/retrieve/${domain}")
 	case $(echo "$reply" | jq -r .status) in
 		SUCCESS)
 			;;
